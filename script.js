@@ -62,6 +62,77 @@ const EVENING_RITUALS = [
   { id: 'er-6', title: 'সুন্নাহ ঘুম', desc: 'ওযু করে ডান কাত হয়ে ১১টার মধ্যে ঘুমান' },
 ];
 
+const SHUTDOWN_RITUALS = [
+  { id: 'sr-1', title: 'চলতি কোড বা ফাইল সেভ ও গিট কমিট', desc: 'অসমাপ্ত কাজ পরিষ্কার অবস্থায় রাখুন যাতে কাল শুরু করা সহজ হয়' },
+  { id: 'sr-2', title: 'ব্রাউজারের অপ্রয়োজনীয় কাজের ট্যাব বন্ধ', desc: 'কাজের সব উইন্ডো বন্ধ করে ডিজিটাল ক্লিয়ারেন্স করুন' },
+  { id: 'sr-3', title: 'ডেস্ক ও ওয়ার্কস্পেস গুছিয়ে পরিচ্ছন্ন করা', desc: 'টেবিল পরিষ্কার রাখা মানসিক প্রশান্তির জন্য আবশ্যক' },
+  { id: 'sr-4', title: 'আগামীকালের ডিপ ওয়ার্কের ৩টি প্রধান কাজ চিহ্নিত করা', desc: 'কাল কী করবেন তা আজ রাতেই চূড়ান্ত করুন' },
+  { id: 'sr-5', title: 'শাটডাউন বাক্য উচ্চারণ ও কাজ ডিসকানেক্ট', desc: 'মুখে বলুন: "আলহামদুলিল্লাহ, আজকের কাজ সমাপ্ত — Shutdown Complete!"' },
+];
+
+const NOT_TO_DO_LIST = [
+  { id: 'ntd-1', title: 'সকাল ১১টার আগে সোশ্যাল মিডিয়া নয়', desc: 'ঘুম থেকে উঠেই ইনস্টাগ্রাম, ফেসবুক বা টিকটক দেখা ডোপামিন ভেঙে ফেলে।' },
+  { id: 'ntd-2', title: 'কাজের ব্লকের মাঝে রিলেটেড না এমন ভিডিও নয়', desc: 'ইউটিউবে শিক্ষণীয় বা পডকাস্টের নামে ফোকাস নষ্ট করা মারাত্মক ক্ষতি।' },
+  { id: 'ntd-3', title: 'বিছানায় বসে বা শুয়ে কাজ নয়', desc: 'বিছানা শুধু বিশ্রামের জন্য; কাজের টেবিলে বসে সুনির্দিষ্টভাবে কাজ করুন।' },
+  { id: 'ntd-4', title: 'জরুরি কারণ ছাড়া জোহরের পর চা/কফি নয়', desc: 'বিকালে ক্যাফেইন ঘুমের সাইকেল ও গভীর ঘুম নষ্ট করে।' },
+  { id: 'ntd-5', title: 'আউটকাম নির্ধারণ না করে সরাসরি কাজে বসা নয়', desc: 'ঠিক কী শেষ হবে তা না জেনে শুরু করলে কাজ ড্র্যাগ হতে থাকে।' },
+  { id: 'ntd-6', title: 'অযথা তর্ক-বিতর্ক ও অনর্থক কমেন্ট যুদ্ধ নয়', desc: 'সোশ্যাল মিডিয়ায় অনর্থক কথাবার্তা মানসিক শক্তি নিংড়ে ফেলে।' },
+];
+
+const BAD_HABITS = [
+  {
+    icon: '📱',
+    name: 'অনিয়ন্ত্রিত রিলস ও সোশ্যাল স্ক্রলিং',
+    damageWorld: 'ডোপামিন রিসেপ্টর ভোঁতা হয়, গভীর ফোকাস করার ক্ষমতা ৯০% কমে যায়, মস্তিষ্কে ব্রেন ফগ তৈরি হয়।',
+    damageDeen: 'সময় অপচয় (যা অন্যতম বড় নিয়ামত) এবং চোখের খেয়ানত ও অশ্লীলতায় জড়ানোর ঝুঁকি বাড়ে।'
+  },
+  {
+    icon: '⏰',
+    name: 'নামাজে বিলম্ব ও শেষ মুহূর্তে আদায়',
+    damageWorld: 'জীবনে ও রিজিকে বরকত ছিনিয়ে নেওয়া হয়, মনে সর্বদা এক অজানা ক্লান্তি ও অস্থিরতা বিরাজ করে।',
+    damageDeen: 'মুনাফিকের অন্যতম আলামত; কিয়ামতের দিন প্রথম হিসাব হবে নামাজের।'
+  },
+  {
+    icon: '⏳',
+    name: 'গড়িমসি (Procrastination) ও আলসেমি',
+    damageWorld: 'কাজের ডেডলাইন মিস, ক্লায়েন্ট হারানো ও নিজের আত্মবিশ্বাস ধ্বংস হয়ে যায়।',
+    damageDeen: 'রাসূলুল্লাহ (ﷺ) প্রতিদিন দোয়া করতেন: "হে আল্লাহ, আমি আপনার কাছে অলসতা থেকে আশ্রয় চাই।"'
+  },
+  {
+    icon: '🌙',
+    name: 'দেরিতে ঘুমানো ও অযথা রাত জাগা',
+    damageWorld: 'পরদিন সকালে ক্লান্তি, ব্রেনের স্মৃতিশক্তি দুর্বল হওয়া এবং হরমোনাল ভারসাম্য নষ্ট হওয়া।',
+    damageDeen: 'ফজরের জামাত ও তাহাজ্জুদ ছুটে যাওয়া; রাতের বরকত থেকে বঞ্চিত হওয়া।'
+  },
+];
+
+const GOOD_HABITS = [
+  {
+    icon: '⚡',
+    name: 'ফজরের পরপরই ডিপ ওয়ার্ক করা',
+    benefitWorld: 'পৃথিবী যখন ঘুমে থাকে, তখন ৩ ঘণ্টায় সাধারণের পুরো দিনের চেয়ে বেশি ও উন্নত কাজ তৈরি হয়।',
+    benefitDeen: 'রাসূলুল্লাহ (ﷺ) দোয়া করেছেন: "হে আল্লাহ, আমার উম্মতকে তার সকালের কাজে বরকত দান করুন।" (আবু দাউদ)'
+  },
+  {
+    icon: '🕌',
+    name: 'পাঁচ ওয়াক্ত নামাজ যথাসময়ে আদায়',
+    benefitWorld: 'প্রতি ৩-৪ ঘণ্টা পর ব্রেনের চমৎকার বায়োলজিক্যাল রিসেট, স্ট্রেস দূরীকরণ ও মানসিক শৃঙ্খলা।',
+    benefitDeen: 'আল্লাহর ভালোবাসা অর্জন এবং বান্দা ও রবের সরাসরি আত্মিক সংযোগ।'
+  },
+  {
+    icon: '🎯',
+    name: 'এক সময়ে একটি কাজে পূর্ণ নিবেদন',
+    benefitWorld: 'কাজের কোয়ালিটি বাড়ে, ভুল কমে এবং জটিলতম সফটওয়্যার/প্রজেক্ট অতি দ্রুত শেষ হয়।',
+    benefitDeen: 'ইহসান (পরিপূর্ণতা) নীতি: "আল্লাহ ভালোবাসেন যখন তোমাদের কেউ কোনো কাজ করে, তা নিখুঁতভাবে করে।"'
+  },
+  {
+    icon: '📖',
+    name: 'দৈনিক কুরআন তিলাওয়াত ও জিকির',
+    benefitWorld: 'হৃদয়ের প্রশান্তি, স্ট্রেস ও ডিপ্রেশন থেকে মুক্তি এবং ইতিবাচক মানসিকতা।',
+    benefitDeen: '"জেনে রাখো, আল্লাহর জিকিরেই কেবল অন্তরসমূহ প্রশান্ত হয়।" (সূরা রাদ: ২৮)'
+  },
+];
+
 const DEEP_WORK_BLOCKS = SCHEDULE_BLOCKS.filter(b => b.cat === 'deepwork');
 
 // ═══════════════════════════════════════════════════════════════
@@ -99,8 +170,14 @@ function getDefaultState() {
     amal: {},
     morningRitual: {},
     eveningRitual: {},
+    shutdownRitual: {},
+    notToDo: {},
+    outcomes: {},
+    distractions: [],
+    preflight: { phone: false, tabs: false, water: false },
     tasks: {},        // { blockId: [{id, text, done}] }
     tomorrowTasks: {}, // { blockId: [text] }
+    sessionPrep: {},   // { 'sc-1-1': true, ... }
     muhasabah: { accomplished: '', wasted: '', grateful: '', improve: '', rating: 0 },
     pomodoro: { count: 0, totalMin: 0 },
   };
@@ -108,13 +185,15 @@ function getDefaultState() {
   AMAL_LIST.forEach(a => { s.amal[a.id] = false; });
   MORNING_RITUALS.forEach(r => { s.morningRitual[r.id] = false; });
   EVENING_RITUALS.forEach(r => { s.eveningRitual[r.id] = false; });
-  DEEP_WORK_BLOCKS.forEach(b => { s.tasks[b.id] = []; s.tomorrowTasks[b.id] = []; });
+  SHUTDOWN_RITUALS.forEach(r => { s.shutdownRitual[r.id] = false; });
+  NOT_TO_DO_LIST.forEach(n => { s.notToDo[n.id] = false; });
+  DEEP_WORK_BLOCKS.forEach(b => { s.tasks[b.id] = []; s.tomorrowTasks[b.id] = []; s.outcomes[b.id] = ''; });
   return s;
 }
 
 function computeStreak(prevState) {
   // If yesterday's 5 prayers all done, increment streak
-  const all5 = NAMAZ_LIST.every(n => prevState.namaz[n.id]);
+  const all5 = NAMAZ_LIST.every(n => prevState.namaz && prevState.namaz[n.id]);
   return all5 ? (prevState.streak || 0) + 1 : 0;
 }
 
@@ -123,6 +202,12 @@ function saveState() {
 }
 
 let state = loadState();
+if (!state.shutdownRitual) state.shutdownRitual = {};
+if (!state.notToDo) state.notToDo = {};
+if (!state.outcomes) state.outcomes = {};
+if (!state.distractions) state.distractions = [];
+if (!state.preflight) state.preflight = { phone: false, tabs: false, water: false };
+if (!state.sessionPrep) state.sessionPrep = {};
 
 // ═══════════════════════════════════════════════════════════════
 // NAVIGATION
@@ -133,7 +218,10 @@ const pageNames = {
   dashboard: 'আজকের রুটিন',
   namaz:     'নামাজ ট্র্যাকার',
   deepwork:  'ডিপ ওয়ার্ক',
+  session:   'পারফেক্ট সেশন গাইড',
   amal:      'আমল ট্র্যাকার',
+  protocol:  'প্রোটোকল ও রুলস',
+  habits:    'অভ্যাস ও মাইন্ডসেট',
   ritual:    'রিচুয়াল',
   muhasabah: 'রাতের হিসাব',
 };
@@ -425,9 +513,65 @@ function selectDwBlock(block) {
   document.getElementById('timerReset').disabled = false;
   document.getElementById('tasksBlockTitle').textContent = block.title + ' — কাজের তালিকা';
   document.getElementById('tasksBlockTag').textContent = block.catBn;
+  
+  // Render Point 1: Outcome
+  renderOutcome(block.id);
+
   renderDwBlockSelector();
   renderTasks(block.id);
+  renderDistractions();
 }
+
+// ─── Outcome Management (Point 1) ───────────────────────────────
+function renderOutcome(blockId) {
+  const currentVal = state.outcomes && state.outcomes[blockId] ? state.outcomes[blockId] : '';
+  const displayBox = document.getElementById('currentOutcomeDisplay');
+  const displayText = document.getElementById('currentOutcomeText');
+  const inputRow   = document.querySelector('.outcome-input-row');
+  const input      = document.getElementById('sessionOutcomeInput');
+
+  if (currentVal) {
+    displayText.textContent = currentVal;
+    displayBox.style.display = 'flex';
+    inputRow.style.display = 'none';
+  } else {
+    input.value = '';
+    displayBox.style.display = 'none';
+    inputRow.style.display = 'flex';
+  }
+}
+
+document.getElementById('saveOutcomeBtn').addEventListener('click', saveOutcome);
+document.getElementById('sessionOutcomeInput').addEventListener('keydown', e => { if (e.key === 'Enter') saveOutcome(); });
+document.getElementById('clearOutcomeBtn').addEventListener('click', () => {
+  if (!activeBlock) return;
+  state.outcomes[activeBlock.id] = '';
+  saveState();
+  renderOutcome(activeBlock.id);
+});
+
+function saveOutcome() {
+  if (!activeBlock) { showToast('প্রথমে একটি ব্লক বেছে নিন'); return; }
+  const input = document.getElementById('sessionOutcomeInput');
+  const val = input.value.trim();
+  if (!val) { showToast('একটি স্পষ্ট আউটকাম লিখুন'); return; }
+  state.outcomes[activeBlock.id] = val;
+  saveState();
+  renderOutcome(activeBlock.id);
+  showToast('🎯 সেশন আউটকাম নির্ধারিত হয়েছে!');
+}
+
+// ─── Preflight Checks (Point 3 & 4) ─────────────────────────────
+['phone', 'tabs', 'water'].forEach(key => {
+  const el = document.getElementById(`pf-${key}`);
+  if (el) {
+    el.checked = !!state.preflight[key];
+    el.addEventListener('change', () => {
+      state.preflight[key] = el.checked;
+      saveState();
+    });
+  }
+});
 
 document.getElementById('timerStart').addEventListener('click', startTimer);
 document.getElementById('timerPause').addEventListener('click', pauseTimer);
@@ -435,11 +579,19 @@ document.getElementById('timerReset').addEventListener('click', resetTimer);
 
 function startTimer() {
   if (!activeBlock) return;
+  
+  // Tip if outcome not yet set
+  if (!state.outcomes[activeBlock.id]) {
+    showToast('💡 টিপ: পয়েন্ট ১ অনুযায়ী ক্লিয়ার আউটকাম লিখে নিলে একাগ্রতা বৃদ্ধি পায়');
+  }
+
   timerRunning = true;
   sessionStart = Date.now();
   document.getElementById('timerStart').disabled = true;
   document.getElementById('timerPause').disabled = false;
   document.getElementById('timerDisplay').classList.add('running');
+  const bp = document.getElementById('breakProtocolBanner');
+  if (bp) bp.classList.remove('active');
 
   timerInterval = setInterval(() => {
     timerSeconds--;
@@ -460,6 +612,13 @@ function startTimer() {
       timerSeconds = 25 * 60;
       updateTimerDisplay();
       document.getElementById('timerDisplay').classList.remove('finished');
+
+      // Feature 2: Play soothing Chime Bell when session finishes
+      playSessionChime();
+
+      // Point 6: Activate Smart Break Guide
+      const bpBanner = document.getElementById('breakProtocolBanner');
+      if (bpBanner) bpBanner.classList.add('active');
     }
   }, 1000);
 }
@@ -470,6 +629,7 @@ function pauseTimer() {
   document.getElementById('timerStart').disabled = false;
   document.getElementById('timerPause').disabled = true;
   document.getElementById('timerDisplay').classList.remove('running');
+  syncZenControls();
   showToast('⏸️ বিরতি');
 }
 
@@ -481,19 +641,344 @@ function resetTimer() {
   document.getElementById('timerStart').disabled = !activeBlock;
   document.getElementById('timerPause').disabled = true;
   document.getElementById('timerDisplay').classList.remove('running', 'finished');
+  const bp = document.getElementById('breakProtocolBanner');
+  if (bp) bp.classList.remove('active');
+  syncZenControls();
 }
 
 function updateTimerDisplay() {
   const m = Math.floor(timerSeconds / 60);
   const s = timerSeconds % 60;
-  document.getElementById('timerDisplay').textContent =
-    `${toBn(String(m).padStart(2,'0'))}:${toBn(String(s).padStart(2,'0'))}`;
+  const timeFormatted = `${toBn(String(m).padStart(2,'0'))}:${toBn(String(s).padStart(2,'0'))}`;
+  
+  const timerDisplay = document.getElementById('timerDisplay');
+  if (timerDisplay) timerDisplay.textContent = timeFormatted;
+
+  // Sync to Zen display if open
+  const zenDisplay = document.getElementById('zenTimerDisplay');
+  if (zenDisplay) zenDisplay.textContent = timeFormatted;
 }
 
 function updatePomodoroInfo() {
-  document.getElementById('pomodoroCount').textContent  = toBn(state.pomodoro.count);
-  document.getElementById('totalFocusTime').textContent = toBn(state.pomodoro.totalMin) + ' মি';
+  const countStr = toBn(state.pomodoro.count);
+  const timeStr  = toBn(state.pomodoro.totalMin) + ' মি';
+  document.getElementById('pomodoroCount').textContent  = countStr;
+  document.getElementById('totalFocusTime').textContent = timeStr;
+
+  const zCount = document.getElementById('zenPomodoroCount');
+  const zTime  = document.getElementById('zenFocusTime');
+  if (zCount) zCount.textContent = countStr;
+  if (zTime)  zTime.textContent  = timeStr;
 }
+
+// ═══════════════════════════════════════════════════════════════
+// FEATURE 1: AMBIENT FOCUS SOUND GENERATOR (Web Audio API)
+// ═══════════════════════════════════════════════════════════════
+
+let audioCtx = null;
+let currentAmbientSound = null; // 'rain' | 'waves' | 'wind' | 'birds' | null
+let ambientGainNode = null;
+let ambientSourceNodes = [];
+let soundBellEnabled = true;
+
+function initAudioContext() {
+  if (!audioCtx) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    audioCtx = new AudioContext();
+  }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+}
+
+function stopAmbientSound() {
+  ambientSourceNodes.forEach(node => {
+    try { node.stop(); node.disconnect(); } catch (e) {}
+  });
+  ambientSourceNodes = [];
+  currentAmbientSound = null;
+  document.querySelectorAll('.amb-btn').forEach(b => b.classList.remove('active'));
+  const zSound = document.getElementById('zenCurrentSound');
+  if (zSound) zSound.textContent = 'বন্ধ';
+}
+
+function getVolume() {
+  const slider = document.getElementById('ambVolume');
+  return slider ? parseFloat(slider.value) : 0.3;
+}
+
+function playAmbientSound(type) {
+  initAudioContext();
+
+  if (currentAmbientSound === type) {
+    stopAmbientSound();
+    showToast('🔇 অ্যাম্বিয়েন্ট সাউন্ড বন্ধ করা হলো');
+    return;
+  }
+
+  stopAmbientSound();
+  currentAmbientSound = type;
+
+  // Active state button
+  const activeBtn = document.getElementById(`btn-${type}`);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  ambientGainNode = audioCtx.createGain();
+  ambientGainNode.gain.setValueAtTime(getVolume(), audioCtx.currentTime);
+  ambientGainNode.connect(audioCtx.destination);
+
+  const zSound = document.getElementById('zenCurrentSound');
+  const soundTitles = {
+    brown: 'ডিপ ব্রাউন নয়েজ 🪐',
+    rain: 'মৃদু বৃষ্টির রিমঝিম 🌧️',
+    binaural: 'আলফা ওয়েভ (১০Hz ফোকাস) 🧠',
+    fire: 'উষ্ণ অগ্নিকুণ্ড 🪵'
+  };
+  if (zSound) zSound.textContent = soundTitles[type] || type;
+
+  const sampleRate = audioCtx.sampleRate;
+  // 5 seconds looping buffer for ultra-smooth realistic texture
+  const bufferDuration = 5;
+  const bufferSize = sampleRate * bufferDuration;
+
+  if (type === 'brown') {
+    // 1. Pure Deep Brown Noise (Red Noise) — 6dB/octave dropoff, deeply calming, masks all distractions
+    const buffer = audioCtx.createBuffer(2, bufferSize, sampleRate);
+    for (let channel = 0; channel < 2; channel++) {
+      const data = buffer.getChannelData(channel);
+      let lastOut = 0.0;
+      for (let i = 0; i < bufferSize; i++) {
+        const white = Math.random() * 2 - 1;
+        lastOut = (lastOut + (0.025 * white)) / 1.025;
+        data[i] = lastOut * 3.5; // Smooth warm brown noise
+      }
+    }
+    const noise = audioCtx.createBufferSource();
+    noise.buffer = buffer;
+    noise.loop = true;
+
+    // Warm Butterworth low-pass to eliminate any trace of harsh hiss
+    const lowPass = audioCtx.createBiquadFilter();
+    lowPass.type = 'lowpass';
+    lowPass.frequency.setValueAtTime(380, audioCtx.currentTime);
+
+    noise.connect(lowPass);
+    lowPass.connect(ambientGainNode);
+    noise.start();
+    ambientSourceNodes.push(noise);
+
+  } else if (type === 'rain') {
+    // 2. Soft Gentle Rain — continuous muffled rain drops + brown noise baseline (no harsh sizzling)
+    const buffer = audioCtx.createBuffer(2, bufferSize, sampleRate);
+    for (let channel = 0; channel < 2; channel++) {
+      const data = buffer.getChannelData(channel);
+      let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+      for (let i = 0; i < bufferSize; i++) {
+        const white = Math.random() * 2 - 1;
+        b0 = 0.99886 * b0 + white * 0.0555179;
+        b1 = 0.99332 * b1 + white * 0.0750759;
+        b2 = 0.96900 * b2 + white * 0.1538520;
+        b3 = 0.86650 * b3 + white * 0.3104856;
+        b4 = 0.55000 * b4 + white * 0.5329522;
+        b5 = -0.7616 * b5 - white * 0.0168980;
+        // Soft raindrop bursts
+        const dropMod = Math.sin(i / (sampleRate * 0.4)) * 0.15;
+        data[i] = ((b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.07) * (0.85 + dropMod);
+        b6 = white * 0.115926;
+      }
+    }
+    const noise = audioCtx.createBufferSource();
+    noise.buffer = buffer;
+    noise.loop = true;
+
+    // Filter to soft rain window resonance
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(850, audioCtx.currentTime);
+
+    noise.connect(filter);
+    filter.connect(ambientGainNode);
+    noise.start();
+    ambientSourceNodes.push(noise);
+
+  } else if (type === 'binaural') {
+    // 3. Alpha Wave 10Hz Binaural Beat (160Hz Left, 170Hz Right) with warm harmonic drone (216Hz)
+    // Proven neuroscience frequency for deep focus & calm alertness
+    const merger = audioCtx.createChannelMerger(2);
+
+    const oscLeft = audioCtx.createOscillator();
+    oscLeft.type = 'sine';
+    oscLeft.frequency.setValueAtTime(160, audioCtx.currentTime);
+
+    const oscRight = audioCtx.createOscillator();
+    oscRight.type = 'sine';
+    oscRight.frequency.setValueAtTime(170, audioCtx.currentTime); // 170 - 160 = 10Hz Alpha beat
+
+    const gainL = audioCtx.createGain();
+    const gainR = audioCtx.createGain();
+    gainL.gain.setValueAtTime(0.18, audioCtx.currentTime);
+    gainR.gain.setValueAtTime(0.18, audioCtx.currentTime);
+
+    oscLeft.connect(gainL);
+    oscRight.connect(gainR);
+
+    gainL.connect(merger, 0, 0); // Left ear
+    gainR.connect(merger, 0, 1); // Right ear
+
+    // Soft sub-harmonic drone for richness
+    const subOsc = audioCtx.createOscillator();
+    const subGain = audioCtx.createGain();
+    subOsc.type = 'sine';
+    subOsc.frequency.setValueAtTime(80, audioCtx.currentTime);
+    subGain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+    subOsc.connect(subGain);
+    subGain.connect(ambientGainNode);
+
+    merger.connect(ambientGainNode);
+
+    oscLeft.start();
+    oscRight.start();
+    subOsc.start();
+    ambientSourceNodes.push(oscLeft, oscRight, subOsc);
+
+  } else if (type === 'fire') {
+    // 4. Warm Cozy Fireplace / Bonfire crackle
+    const buffer = audioCtx.createBuffer(2, bufferSize, sampleRate);
+    for (let channel = 0; channel < 2; channel++) {
+      const data = buffer.getChannelData(channel);
+      let lastOut = 0.0;
+      for (let i = 0; i < bufferSize; i++) {
+        const white = Math.random() * 2 - 1;
+        // Deep warm rumble
+        lastOut = (lastOut + (0.018 * white)) / 1.018;
+        // Occasional gentle wood crackle pop
+        let crackle = 0;
+        if (Math.random() < 0.00045) {
+          crackle = (Math.random() * 2 - 1) * 0.45;
+        }
+        data[i] = (lastOut * 2.8) + crackle;
+      }
+    }
+    const noise = audioCtx.createBufferSource();
+    noise.buffer = buffer;
+    noise.loop = true;
+
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(550, audioCtx.currentTime);
+
+    noise.connect(filter);
+    filter.connect(ambientGainNode);
+    noise.start();
+    ambientSourceNodes.push(noise);
+  }
+
+  showToast(`🎧 ${soundTitles[type] || type} চালু করা হলো`);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// FEATURE 2: SOOTHING CHIME BELL (Session Complete)
+// ═══════════════════════════════════════════════════════════════
+
+function playSessionChime() {
+  if (!soundBellEnabled) return;
+  try {
+    initAudioContext();
+    const now = audioCtx.currentTime;
+
+    // Harmonic Tibetan/Singing bell chords (528Hz, 660Hz, 792Hz)
+    const freqs = [528, 660, 792, 1056];
+    freqs.forEach((freq, idx) => {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now + idx * 0.12);
+
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.28 / (idx + 1), now + 0.05 + idx * 0.12);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.2);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(now + idx * 0.12);
+      osc.stop(now + 3.5);
+    });
+  } catch (err) {
+    console.log('Chime sound error:', err);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// FEATURE 3: FULLSCREEN ZEN MONASTIC MODE
+// ═══════════════════════════════════════════════════════════════
+
+function openZenMode() {
+  const overlay = document.getElementById('zenOverlay');
+  if (!overlay) return;
+
+  // Sync state into Zen
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  const blockTitle = activeBlock ? `${activeBlock.catBn} — ${activeBlock.title}` : 'ব্লক বেছে নিন';
+  document.getElementById('zenTimerBlock').textContent = blockTitle;
+
+  const currentOutcome = (activeBlock && state.outcomes && state.outcomes[activeBlock.id]) 
+    ? state.outcomes[activeBlock.id] 
+    : '🎯 সেশনের নির্দিষ্ট আউটকাম সেট করা হয়নি — শুধু গভীর একাগ্রতা ধরে রাখুন';
+  document.getElementById('zenOutcomeText').textContent = currentOutcome;
+
+  updateTimerDisplay();
+  updatePomodoroInfo();
+  syncZenControls();
+
+  showToast('🧘‍♂️ জেন মোডে স্বাগতম! ফুলস্ক্রিন একাগ্রতা মোড চালু');
+}
+
+function closeZenMode() {
+  const overlay = document.getElementById('zenOverlay');
+  if (!overlay) return;
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function syncZenControls() {
+  const zStart = document.getElementById('zenTimerStart');
+  const zPause = document.getElementById('zenTimerPause');
+  const zReset = document.getElementById('zenTimerReset');
+  if (!zStart || !zPause) return;
+
+  if (timerRunning) {
+    zStart.disabled = true;
+    zPause.disabled = false;
+  } else {
+    zStart.disabled = !activeBlock;
+    zPause.disabled = true;
+  }
+}
+
+// Global Keyboard Shortcuts (Esc for Zen, F for Fullscreen Zen, Space for Timer)
+document.addEventListener('keydown', (e) => {
+  // If user is writing in an input or textarea, ignore shortcuts
+  const tag = e.target.tagName.toLowerCase();
+  if (tag === 'input' || tag === 'textarea') return;
+
+  if (e.key === 'Escape') {
+    closeZenMode();
+  } else if (e.key === 'f' || e.key === 'F') {
+    if (currentPage === 'deepwork' || document.getElementById('zenOverlay').classList.contains('active')) {
+      const isZen = document.getElementById('zenOverlay').classList.contains('active');
+      if (isZen) closeZenMode();
+      else openZenMode();
+    }
+  } else if (e.code === 'Space') {
+    e.preventDefault();
+    if (timerRunning) pauseTimer();
+    else if (activeBlock) startTimer();
+  }
+});
 
 // ─── Task List ──────────────────────────────────────────────────
 function renderTasks(blockId) {
@@ -553,6 +1038,58 @@ window.deleteTask = function(blockId, idx) {
   renderTasks(blockId);
 };
 
+// ─── 3. Distraction Parking Lot ─────────────────────────────────
+function renderDistractions() {
+  const list = document.getElementById('distractionList');
+  if (!list) return;
+  list.innerHTML = '';
+  const items = state.distractions || [];
+
+  if (items.length === 0) {
+    list.innerHTML = `<div class="tasks-empty"><span>🛡️ পার্কিং লট ফাঁকা। কাজ করার সময় অনর্থক কোনো চিন্তা মনে এলে এখানে লিখে কাজে ফিরে যান।</span></div>`;
+    return;
+  }
+
+  items.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'task-item parked-item';
+    div.innerHTML = `
+      <span class="parked-bullet">📌</span>
+      <span class="task-text">${escHtml(item.text)} <small class="parked-time">${item.time || ''}</small></span>
+      <button class="task-del" onclick="deleteDistraction(${idx})" aria-label="Delete">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    `;
+    list.appendChild(div);
+  });
+}
+
+const distInput = document.getElementById('distractionInput');
+const distAddBtn = document.getElementById('distractionAddBtn');
+if (distAddBtn && distInput) {
+  distAddBtn.addEventListener('click', addDistraction);
+  distInput.addEventListener('keydown', e => { if (e.key === 'Enter') addDistraction(); });
+}
+
+function addDistraction() {
+  const val = distInput.value.trim();
+  if (!val) return;
+  const d = new Date();
+  const timeStr = `${toBn(d.getHours() % 12 || 12)}:${toBn(String(d.getMinutes()).padStart(2,'0'))}`;
+  if (!state.distractions) state.distractions = [];
+  state.distractions.unshift({ text: val, time: timeStr });
+  saveState();
+  distInput.value = '';
+  renderDistractions();
+  showToast('🛡️ চিন্তাটি পার্ক করা হলো! এখন কাজে পূর্ণ ফোকাস রাখুন');
+}
+
+window.deleteDistraction = function(idx) {
+  state.distractions.splice(idx, 1);
+  saveState();
+  renderDistractions();
+};
+
 // ═══════════════════════════════════════════════════════════════
 // AMAL TRACKER
 // ═══════════════════════════════════════════════════════════════
@@ -594,16 +1131,18 @@ function updateAmalCount() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// RITUALS
+// RITUALS (Morning, Evening, Shutdown)
 // ═══════════════════════════════════════════════════════════════
 
 function renderRituals() {
   renderChecklist('morningChecklist', MORNING_RITUALS, state.morningRitual, 'morning-cb', 'morningProgress');
   renderChecklist('eveningChecklist', EVENING_RITUALS, state.eveningRitual, 'evening-cb', 'eveningProgress');
+  renderChecklist('shutdownChecklist', SHUTDOWN_RITUALS, state.shutdownRitual, 'shutdown-cb', 'shutdownProgress');
 }
 
 function renderChecklist(containerId, list, stateObj, cbClass, progressId) {
   const container = document.getElementById(containerId);
+  if (!container) return;
   container.innerHTML = '';
 
   let doneCount = 0;
@@ -625,19 +1164,115 @@ function renderChecklist(containerId, list, stateObj, cbClass, progressId) {
     container.appendChild(item);
   });
 
-  document.getElementById(progressId).textContent = `${toBn(doneCount)}/${toBn(list.length)}`;
+  const prog = document.getElementById(progressId);
+  if (prog) prog.textContent = `${toBn(doneCount)}/${toBn(list.length)}`;
 }
 
 window.toggleRitual = function(containerId, rId, cbClass, progressId) {
-  const isMorning = containerId === 'morningChecklist';
-  const stateObj  = isMorning ? state.morningRitual : state.eveningRitual;
-  const list      = isMorning ? MORNING_RITUALS : EVENING_RITUALS;
-  stateObj[rId]   = !stateObj[rId];
+  let stateObj, list;
+  if (containerId === 'morningChecklist') {
+    stateObj = state.morningRitual;
+    list = MORNING_RITUALS;
+  } else if (containerId === 'eveningChecklist') {
+    stateObj = state.eveningRitual;
+    list = EVENING_RITUALS;
+  } else {
+    stateObj = state.shutdownRitual;
+    list = SHUTDOWN_RITUALS;
+  }
+
+  stateObj[rId] = !stateObj[rId];
   saveState();
   renderChecklist(containerId, list, stateObj, cbClass, progressId);
   updateSidebarBadges();
-  showToast(stateObj[rId] ? '✅ রিচুয়াল সম্পন্ন!' : '↩️ চিহ্ন সরানো হলো');
+  showToast(stateObj[rId] ? '✅ সম্পন্ন হয়েছে!' : '↩️ চিহ্ন সরানো হলো');
 };
+
+// ─── Point 7: Not To Do List ────────────────────────────────────
+function renderNotToDoList() {
+  const container = document.getElementById('notToDoList');
+  if (!container) return;
+  container.innerHTML = '';
+
+  NOT_TO_DO_LIST.forEach((item, idx) => {
+    const active = state.notToDo && state.notToDo[item.id];
+    const div = document.createElement('div');
+    div.className = `nottodo-item${active ? ' committed' : ''}`;
+    div.innerHTML = `
+      <div class="ntd-cb-wrap">
+        <input type="checkbox" id="ntd-${item.id}" ${active ? 'checked' : ''} onchange="toggleNotToDo('${item.id}')" />
+      </div>
+      <div class="ntd-content">
+        <div class="ntd-title">🛑 ${item.title}</div>
+        <div class="ntd-desc">${item.desc}</div>
+      </div>
+      <div class="ntd-badge">${active ? 'অঙ্গীকারাবদ্ধ ✓' : 'ওয়াদা করুন'}</div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+window.toggleNotToDo = function(id) {
+  if (!state.notToDo) state.notToDo = {};
+  state.notToDo[id] = !state.notToDo[id];
+  saveState();
+  renderNotToDoList();
+  updateSidebarBadges();
+  showToast(state.notToDo[id] ? '🛡️ এই বদভ্যাস থেকে দূরে থাকার অঙ্গীকার করা হলো' : '↩️ আপডেট করা হলো');
+};
+
+// ─── Points 9 & 10: Habits & Reminders ──────────────────────────
+function renderHabits() {
+  // Bad Habits
+  const badGrid = document.getElementById('badHabitsGrid');
+  if (badGrid) {
+    badGrid.innerHTML = '';
+    BAD_HABITS.forEach(h => {
+      const card = document.createElement('div');
+      card.className = 'habit-card bad-habit-card';
+      card.innerHTML = `
+        <div class="hc-header">
+          <span class="hc-icon">${h.icon}</span>
+          <h3 class="hc-name">${h.name}</h3>
+        </div>
+        <div class="hc-section">
+          <div class="hc-sub-title danger-text">💥 পার্থিব ক্ষয়ক্ষতি:</div>
+          <p class="hc-text">${h.damageWorld}</p>
+        </div>
+        <div class="hc-section">
+          <div class="hc-sub-title deen-danger-text">⚠️ দ্বীনি ও আত্মিক ক্ষতি:</div>
+          <p class="hc-text">${h.damageDeen}</p>
+        </div>
+      `;
+      badGrid.appendChild(card);
+    });
+  }
+
+  // Good Habits
+  const goodGrid = document.getElementById('goodHabitsGrid');
+  if (goodGrid) {
+    goodGrid.innerHTML = '';
+    GOOD_HABITS.forEach(h => {
+      const card = document.createElement('div');
+      card.className = 'habit-card good-habit-card';
+      card.innerHTML = `
+        <div class="hc-header">
+          <span class="hc-icon">${h.icon}</span>
+          <h3 class="hc-name">${h.name}</h3>
+        </div>
+        <div class="hc-section">
+          <div class="hc-sub-title success-text">🚀 ইহকালীন সমৃদ্ধি:</div>
+          <p class="hc-text">${h.benefitWorld}</p>
+        </div>
+        <div class="hc-section">
+          <div class="hc-sub-title deen-success-text">✨ পরকালীন সাওয়াব ও বরকত:</div>
+          <p class="hc-text">${h.benefitDeen}</p>
+        </div>
+      `;
+      goodGrid.appendChild(card);
+    });
+  }
+}
 
 // ═══════════════════════════════════════════════════════════════
 // MUHASABAH
@@ -762,11 +1397,23 @@ function updateSidebarBadges() {
   const amalDone = AMAL_LIST.filter(a => state.amal[a.id]).length;
   setBadge('badge-amal', AMAL_LIST.length - amalDone);
 
-  // Ritual — remaining
+  // Ritual — remaining (Morning + Evening + Shutdown)
   const morningDone  = MORNING_RITUALS.filter(r => state.morningRitual[r.id]).length;
   const eveningDone  = EVENING_RITUALS.filter(r => state.eveningRitual[r.id]).length;
-  const ritualRem    = (MORNING_RITUALS.length + EVENING_RITUALS.length) - morningDone - eveningDone;
+  const shutdownDone = SHUTDOWN_RITUALS.filter(r => state.shutdownRitual && state.shutdownRitual[r.id]).length;
+  const totalRituals = MORNING_RITUALS.length + EVENING_RITUALS.length + SHUTDOWN_RITUALS.length;
+  const ritualRem    = totalRituals - morningDone - eveningDone - shutdownDone;
   setBadge('badge-ritual', ritualRem);
+
+  // Protocol / Not-To-Do commitments
+  const notToDoTotal = NOT_TO_DO_LIST.length;
+  const notToDoDone  = NOT_TO_DO_LIST.filter(n => state.notToDo && state.notToDo[n.id]).length;
+  setBadge('badge-protocol', notToDoTotal - notToDoDone);
+
+  // Session Preparation remaining checklist count
+  const totalSessionChecks = 15; // 5 pillars * 3 checks each
+  const doneSessionChecks  = Object.values(state.sessionPrep || {}).filter(Boolean).length;
+  setBadge('badge-session', totalSessionChecks - doneSessionChecks);
 }
 
 function setBadge(id, count) {
@@ -778,6 +1425,52 @@ function setBadge(id, count) {
   } else {
     el.classList.remove('show');
   }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// PERFECT WORK SESSION PREPARATION HANDLERS
+// ═══════════════════════════════════════════════════════════════
+
+function renderSessionPrep() {
+  const checks = document.querySelectorAll('.session-chk');
+  if (!checks.length) return;
+
+  checks.forEach(chk => {
+    const id = chk.id;
+    chk.checked = !!(state.sessionPrep && state.sessionPrep[id]);
+    chk.onchange = () => {
+      if (!state.sessionPrep) state.sessionPrep = {};
+      state.sessionPrep[id] = chk.checked;
+      saveState();
+      updateSessionScore();
+      updateSidebarBadges();
+      if (chk.checked) {
+        showToast('🎯 প্রস্তুতি চেকলিস্ট সম্পন্ন!');
+      }
+    };
+  });
+
+  updateSessionScore();
+
+  // Jump to deepwork button
+  const jumpBtn = document.getElementById('goToDeepWorkBtn');
+  if (jumpBtn) {
+    jumpBtn.onclick = () => {
+      navigateTo('deepwork');
+      showToast('⚡ ডিপ ওয়ার্ক মোডে স্বাগতম! বিসমিল্লাহ বলে শুরু করুন');
+    };
+  }
+}
+
+function updateSessionScore() {
+  const total = 15;
+  const done = Object.values(state.sessionPrep || {}).filter(Boolean).length;
+  const pct = Math.round((done / total) * 100);
+
+  const scoreEl = document.getElementById('sessionPrepScore');
+  const barEl   = document.getElementById('sessionPrepBar');
+  if (scoreEl) scoreEl.textContent = `${toBn(pct)}%`;
+  if (barEl) barEl.style.width = `${pct}%`;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -818,6 +1511,53 @@ function injectSvgDefs() {
   document.body.prepend(svg);
 }
 
+function initSoundAndZenControls() {
+  // Ambient Sound Buttons
+  document.querySelectorAll('.amb-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const type = btn.dataset.sound;
+      playAmbientSound(type);
+    });
+  });
+
+  // Volume slider
+  const volSlider = document.getElementById('ambVolume');
+  if (volSlider) {
+    volSlider.addEventListener('input', () => {
+      if (ambientGainNode && audioCtx) {
+        ambientGainNode.gain.setValueAtTime(parseFloat(volSlider.value), audioCtx.currentTime);
+      }
+    });
+  }
+
+  // Bell toggle
+  const bellBtn   = document.getElementById('bellToggleBtn');
+  const bellIcon  = document.getElementById('bellIcon');
+  const bellLabel = document.getElementById('bellLabel');
+  if (bellBtn) {
+    bellBtn.addEventListener('click', () => {
+      soundBellEnabled = !soundBellEnabled;
+      bellIcon.textContent = soundBellEnabled ? '🔔' : '🔕';
+      bellLabel.textContent = soundBellEnabled ? 'সাউন্ড অন' : 'সাউন্ড অফ';
+      showToast(soundBellEnabled ? '🔔 সেশন সমাপ্তি বেল চালু' : '🔕 বেল শব্দ বন্ধ');
+    });
+  }
+
+  // Zen mode buttons
+  const openZen = document.getElementById('openZenBtn');
+  const closeZen = document.getElementById('closeZenBtn');
+  if (openZen) openZen.addEventListener('click', openZenMode);
+  if (closeZen) closeZen.addEventListener('click', closeZenMode);
+
+  // Zen internal timer controls
+  const zStart = document.getElementById('zenTimerStart');
+  const zPause = document.getElementById('zenTimerPause');
+  const zReset = document.getElementById('zenTimerReset');
+  if (zStart) zStart.addEventListener('click', () => { startTimer(); syncZenControls(); });
+  if (zPause) zPause.addEventListener('click', () => { pauseTimer(); syncZenControls(); });
+  if (zReset) zReset.addEventListener('click', () => { resetTimer(); syncZenControls(); });
+}
+
 // ═══════════════════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════════════════
@@ -830,18 +1570,22 @@ function init() {
   renderTasks(DEEP_WORK_BLOCKS[0]?.id || null);
   renderAmal();
   renderRituals();
+  renderSessionPrep();
+  renderNotToDoList();
+  renderHabits();
   renderMuhasabah();
   renderTomorrowBlocks();
   updateDayProgress();
   updatePomodoroInfo();
   updateSidebarBadges();
+  initSoundAndZenControls();
 
   // Auto-select first DW block
   if (DEEP_WORK_BLOCKS.length > 0) {
     selectDwBlock(DEEP_WORK_BLOCKS[0]);
   }
 
-  console.log('%c⚡ DeepWork System Ready — بارك الله فيك', 'color:#7c6ef5;font-size:14px;font-weight:bold;');
+  console.log('%c⚡ DeepWork System Ready — বারক আল্লাহু ফিক', 'color:#7c6ef5;font-size:14px;font-weight:bold;');
 }
 
 init();
