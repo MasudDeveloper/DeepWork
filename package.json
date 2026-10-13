@@ -1,0 +1,12 @@
+{
+  "name": "deepwork-routine",
+  "version": "1.0.0",
+  "description": "My Deep Work daily routine — Islamic mindset + productivity",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve ."
+  },
+  "keywords": ["deepwork", "routine", "productivity", "islamic"],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeepWork — আমার পূর্ণাঙ্গ দৈনন্দিন সিস্টেম</title>
+  <meta name="description" content="ইসলামিক মূল্যবোধে পরিচালিত পূর্ণাঙ্গ দৈনন্দিন রুটিন, নামাজ ট্র্যাকার, ডিপ ওয়ার্ক টাইমার এবং রাতের মুহাসাবাহ সিস্টেম।" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ════ SIDEBAR ════ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <div class="logo-mark">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor"/></svg>
+        </div>
+        <span class="logo-text">DeepWork</span>
+      </div>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="sidebar-date" id="sidebarDate">
+      <span class="date-day" id="dateDay"></span>
+      <span class="date-full" id="dateFull"></span>
+      <div class="day-progress-wrap">
+        <div class="day-progress-bar" id="dayProgressBar"></div>
+      </div>
+      <span class="day-progress-pct" id="dayProgressPct">০%</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-page="dashboard" id="nav-dashboard">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </span>
+        <span class="nav-label">আজকের রুটিন</span>
+        <span class="nav-badge" id="badge-dashboard"></span>
+      </button>
+      <button class="nav-item" data-page="namaz" id="nav-namaz">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+        </span>
+        <span class="nav-label">নামাজ ট্র্যাকার</span>
+        <span class="nav-badge" id="badge-namaz"></span>
+      </button>
+      <button class="nav-item" data-page="deepwork" id="nav-deepwork">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </span>
+        <span class="nav-label">ডিপ ওয়ার্ক</span>
+        <span class="nav-badge" id="badge-deepwork"></span>
+      </button>
+      <button class="nav-item" data-page="amal" id="nav-amal">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </span>
+        <span class="nav-label">আমল ট্র্যাকার</span>
+        <span class="nav-badge" id="badge-amal"></span>
+      </button>
+      <button class="nav-item" data-page="ritual" id="nav-ritual">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </span>
+        <span class="nav-label">রিচুয়াল</span>
+        <span class="nav-badge" id="badge-ritual"></span>
+      </button>
+      <button class="nav-item" data-page="muhasabah" id="nav-muhasabah">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </span>
+        <span class="nav-label">রাতের হিসাব</span>
+        <span class="nav-badge" id="badge-muhasabah"></span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+        <span id="themeIcon">☀️</span>
+        <span class="theme-label" id="themeLabel">লাইট মোড</span>
+      </button>
+      <button class="reset-btn" id="resetDay" title="আজকের ডেটা রিসেট করুন">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ════ MAIN ════ -->
+  <div class="main-wrap">
+    <!-- Top bar -->
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="topbar-title" id="topbarTitle">আজকের রুটিন</div>
+      <div class="topbar-right">
+        <div class="clock" id="liveClock"></div>
+      </div>
+    </header>
+
+    <!-- ═══ PAGE: DASHBOARD ═══ -->
+    <main class="page active" id="page-dashboard">
+      <div class="page-hero">
+        <div class="page-hero-text">
+          <h1 class="page-title">আজকের রুটিন <span class="title-tag">Daily Schedule</span></h1>
+          <p class="page-sub">প্রতিটি ব্লক সম্পন্ন হলে ✓ চিহ্ন দিন</p>
+        </div>
+        <div class="overall-ring" id="overallRing">
+          <svg class="ring-svg" viewBox="0 0 80 80">
+            <circle class="ring-bg" cx="40" cy="40" r="32"/>
+            <circle class="ring-fill" id="ringFill" cx="40" cy="40" r="32" stroke-dasharray="201 201" stroke-dashoffset="201"/>
+          </svg>
+          <div class="ring-text">
+            <span class="ring-pct" id="ringPct">০%</span>
+            <span class="ring-label">সম্পন্ন</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule-list" id="scheduleList">
+        <!-- Generated by JS -->
+      </div>
+    </main>
+
+    <!-- ═══ PAGE: NAMAZ ═══ -->
+    <main class="page" id="page-namaz">
+      <div class="page-hero">
+        <div class="page-hero-text">
+          <h1 class="page-title">নামাজ ট্র্যাকার <span class="title-tag">Salah Tracker</span></h1>
+          <p class="page-sub">আজকের পাঁচ ওয়াক্ত আদায়ের হিসাব রাখুন</p>
+        </div>
+        <div class="namaz-count-box">
+          <span class="nc-val" id="namazCount">০</span>
+          <span class="nc-label">/ ৫ ওয়াক্ত</span>
+        </div>
+      </div>
+
+      <div class="namaz-grid" id="namazGrid">
+        <!-- Generated by JS -->
+      </div>
+
+      <div class="streak-box" id="streakBox">
+        <div class="streak-icon">🔥</div>
+        <div class="streak-info">
+          <span class="streak-val" id="streakVal">০</span>
+          <span class="streak-label">দিনের ধারাবাহিক ৫ ওয়াক্ত স্ট্রিক</span>
+        </div>
+      </div>
+
+      <div class="namaz-quote">
+        <p>إِنَّ الصَّلَاةَ تَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنكَرِ</p>
+        <span>নিশ্চয়ই নামাজ অশ্লীলতা ও মন্দকাজ থেকে বিরত রাখে। — সূরা আনকাবুত: ৪৫</span>
+      </div>
+    </main>
+
+    <!-- ═══ PAGE: DEEP WORK ═══ -->
+    <main class="page" id="page-deepwork">
+      <div class="page-hero">
+        <div class="page-hero-text">
+          <h1 class="page-title">ডিপ ওয়ার্ক <span class="title-tag">Focus Mode</span></h1>
+          <p class="page-sub">ফোকাস ব্লক বেছে নিন, টাস্ক যোগ করুন, টাইমার চালু করুন</p>
+        </div>
+      </div>
+
+      <!-- Block selector -->
+      <div class="dw-block-selector" id="dwBlockSelector">
+        <!-- Generated by JS -->
+      </div>
+
+      <!-- Timer -->
+      <div class="dw-timer-section">
+        <div class="dw-timer-card">
+          <div class="timer-label" id="timerBlockLabel">ব্লক বেছে নিন</div>
+          <div class="timer-display" id="timerDisplay">25:00</div>
+          <div class="timer-controls">
+            <button class="timer-btn start" id="timerStart" disabled>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              শুরু
+            </button>
+            <button class="timer-btn pause" id="timerPause" disabled>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              বিরতি
+            </button>
+            <button class="timer-btn reset" id="timerReset" disabled>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              রিসেট
+            </button>
+          </div>
+          <div class="timer-session-info">
+            <span>পোমোডোরো সংখ্যা: <strong id="pomodoroCount">০</strong></span>
+            <span>মোট ফোকাস: <strong id="totalFocusTime">০ মি</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tasks for selected block -->
+      <div class="dw-tasks-section" id="dwTasksSection">
+        <div class="tasks-header">
+          <h3 id="tasksBlockTitle">আজকের কাজের তালিকা</h3>
+          <span class="tasks-block-tag" id="tasksBlockTag"></span>
+        </div>
+        <div class="task-input-row">
+          <input type="text" class="task-input" id="taskInput" placeholder="নতুন কাজ লিখুন..." maxlength="100" />
+          <button class="task-add-btn" id="taskAddBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+        <div class="task-list" id="taskList">
+          <div class="tasks-empty" id="tasksEmpty">
+            <span>কোনো কাজ নেই। উপরে কাজ যোগ করুন।</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ═══ PAGE: AMAL ═══ -->
+    <main class="page" id="page-amal">
+      <div class="page-hero">
+        <div class="page-hero-text">
+          <h1 class="page-title">আমল ট্র্যাকার <span class="title-tag">Daily Amal</span></h1>
+          <p class="page-sub">প্রতিদিনের ইসলামিক আমলগুলো ট্র্যাক করুন</p>
+        </div>
+        <div class="namaz-count-box">
+          <span class="nc-val" id="amalCount">০</span>
+          <span class="nc-label">/ <span id="amalTotal">৮</span></span>
+        </div>
+      </div>
+
+      <div class="amal-grid" id="amalGrid">
+        <!-- Generated by JS -->
+      </div>
+
+      <div class="amal-quote">
+        <div class="aq-icon">📿</div>
+        <p>ছোট হলেও নিয়মিত আমল আল্লাহর কাছে সবচেয়ে প্রিয়।</p>
+        <span>— সহিহ বুখারি</span>
+      </div>
+    </main>
+
+    <!-- ═══ PAGE: RITUAL ═══ -->
+    <main class="page" id="page-ritual">
+      <div class="page-hero">
+        <div class="page-hero-text">
+          <h1 class="page-title">রিচুয়াল <span class="title-tag">Opening &amp; Closing</span></h1>
+          <p class="page-sub">দিনের শুরু ও শেষের সুন্নাহভিত্তিক চেকলিস্ট</p>
+        </div>
+      </div>
+
+      <div class="rituals-wrap">
+        <!-- Morning -->
+        <div class="ritual-panel morning-panel">
+          <div class="ritual-panel-header">
+            <div class="rph-icon morning-icon">🌄</div>
+            <div>
+              <h2>মর্নিং ওপেনিং রিচুয়াল</h2>
+              <p>ফজরের পর থেকে কাজ শুরু পর্যন্ত</p>
+            </div>
+            <div class="ritual-progress" id="morningProgress">০/৬</div>
+          </div>
+          <div class="ritual-checklist" id="morningChecklist">
+            <!-- Generated by JS -->
+          </div>
+        </div>
+
+        <!-- Evening -->
+        <div class="ritual-panel evening-panel">
+          <div class="ritual-panel-header">
+            <div class="rph-icon evening-icon">🌃</div>
+            <div>
+              <h2>ইভনিং ক্লোজিং রিচুয়াল</h2>
+              <p>এশার পর থেকে ঘুমানো পর্যন্ত</p>
+            </div>
+            <div class="ritual-progress" id="eveningProgress">০/৬</div>
+          </div>
+          <div class="ritual-checklist" id="eveningChecklist">
+            <!-- Generated by JS -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ═══ PAGE: MUHASABAH ═══ -->
+    <main class="page" id="page-muhasabah">
+      <div class="page-hero">
+        <div class="page-hero-text">
+          <h1 class="page-title">রাতের হিসাব <span class="title-tag">Muhasabah</span></h1>
+          <p class="page-sub">আজকের কাজের মূল্যায়ন ও কালকের পরিকল্পনা</p>
+        </div>
+        <div class="day-rating-wrap">
+          <span class="dr-label">আজকের দিন</span>
+          <div class="day-stars" id="dayStars">
+            <button class="star-btn" data-val="1">⭐</button>
+            <button class="star-btn" data-val="2">⭐</button>
+            <button class="star-btn" data-val="3">⭐</button>
+            <button class="star-btn" data-val="4">⭐</button>
+            <button class="star-btn" data-val="5">⭐</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Muhasabah Form -->
+      <div class="muh-form">
+        <div class="muh-section">
+          <div class="muh-q-header">
+            <span class="muh-q-icon">✅</span>
+            <h3>আজ কী কী অর্জন হলো?</h3>
+          </div>
+          <textarea class="muh-textarea" id="muh-accomplished" placeholder="আজ যা সম্পন্ন হলো তা লিখুন..." rows="4" maxlength="1000"></textarea>
+          <div class="char-count" id="cc-accomplished">০/১০০০</div>
+        </div>
+
+        <div class="muh-section">
+          <div class="muh-q-header">
+            <span class="muh-q-icon">⚠️</span>
+            <h3>কোথায় সময় নষ্ট হলো?</h3>
+          </div>
+          <textarea class="muh-textarea" id="muh-wasted" placeholder="কোথায় মনোযোগ হারিয়েছিলেন..." rows="3" maxlength="500"></textarea>
+          <div class="char-count" id="cc-wasted">০/৫০০</div>
+        </div>
+
+        <div class="muh-section">
+          <div class="muh-q-header">
+            <span class="muh-q-icon">🤲</span>
+            <h3>কিসের জন্য আলহামদুলিল্লাহ?</h3>
+          </div>
+          <textarea class="muh-textarea" id="muh-grateful" placeholder="আজ কিসের জন্য শোকরগোজার..." rows="3" maxlength="500"></textarea>
+          <div class="char-count" id="cc-grateful">০/৫০০</div>
+        </div>
+
+        <div class="muh-section">
+          <div class="muh-q-header">
+            <span class="muh-q-icon">🔧</span>
+            <h3>কাল কী উন্নত করবো?</h3>
+          </div>
+          <textarea class="muh-textarea" id="muh-improve" placeholder="আগামীকাল কোন বিষয়ে আরো ভালো করবো..." rows="3" maxlength="500"></textarea>
+          <div class="char-count" id="cc-improve">০/৫০০</div>
+        </div>
+      </div>
+
+      <!-- Tomorrow Planning -->
+      <div class="tomorrow-section">
+        <div class="tomorrow-header">
+          <div class="tmr-icon">📋</div>
+          <div>
+            <h2>কালকের পরিকল্পনা</h2>
+            <p>আগামীকাল কোন ব্লকে কী কাজ করবো</p>
+          </div>
+        </div>
+
+        <div class="tomorrow-blocks" id="tomorrowBlocks">
+          <!-- Generated by JS -->
+        </div>
+      </div>
+
+      <button class="save-muh-btn" id="saveMuhBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        মুহাসাবাহ সেভ করুন
+      </button>
+      <div class="save-confirm" id="saveConfirm">✅ সংরক্ষিত হয়েছে — জাযাকাল্লাহু খাইরান</div>
+    </main>
+  </div>
+
+  <!-- ════ OVERLAY ════ -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ════ TOAST ════ -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
